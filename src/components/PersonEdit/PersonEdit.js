@@ -22,6 +22,7 @@ class PersonEdit extends Component {
                     <input onChange={(e) => this.updateFirstName(e)} value={this.state.curFirstName}></input>
                     <input onChange={(e) => this.updateLastName(e)} value={this.state.curLastName}></input>
                     <button type="button" onClick={() => this.props.saveEditedPerson(this.state.curFirstName, this.state.curLastName, this.props.editingIndex)}>Save</button>
+                    <button type="button" onClick={() => this.props.cancelEditedPerson()}>Cancel</button>
                 </form>
             </div>
         );

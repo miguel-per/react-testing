@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PersonList from './components/PersonList/PersonList';
-import PersonEdit from './PersonEdit';
+import PersonEdit from './components/PersonEdit/PersonEdit';
 import './styles/App.css';
 
 const uuid = require('uuid4');
@@ -32,6 +32,10 @@ class App extends Component {
                        view: 'PersonList'})
     }
 
+    cancelEditedPerson = () => {
+        this.setState({view: "PersonList"})
+    }
+
     selectPerson = (view, editingIndex) => {
         this.setState({view, editingIndex})
     }
@@ -41,7 +45,7 @@ class App extends Component {
         if (this.state.view === "PersonList") {
             content = <div><PersonList people={this.state.people} selectPerson={this.selectPerson}/></div>
         } else if(this.state.view === "PersonEdit") {
-            content = <PersonEdit saveEditedPerson={this.saveEditedPerson} editingIndex={this.state.editingIndex} people={this.state.people}/>
+            content = <PersonEdit saveEditedPerson={this.saveEditedPerson} cancelEditedPerson={this.cancelEditedPerson} editingIndex={this.state.editingIndex} people={this.state.people}/>
         }
         return (
             <div className="App">
